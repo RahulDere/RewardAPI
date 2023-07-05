@@ -1,9 +1,5 @@
 package com.retail.rewardapi.util;
 
-import com.retail.rewardapi.model.RewardTransaction;
-
-import java.util.List;
-
 public class RewardUtil {
 
     public static Long getTotalRewardPointsbyCustomer(Long transactionAmount) {

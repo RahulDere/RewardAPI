@@ -1,5 +1,6 @@
 package com.retail.rewardapi;
 
+import com.retail.rewardapi.repository.RewardTransactionRepository;
 import com.retail.rewardapi.service.RewardApiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class RewardApiApplicationTests {
 	@Autowired
 	@Qualifier("rewardApiTestService")
 	private RewardApiService rewardApiService;
+
+	@Autowired
+	@Qualifier("rewardTransactionTestRepository")
+	private RewardTransactionRepository rewardTransactionRepository;
 
 	@Test
 	void contextLoads() {

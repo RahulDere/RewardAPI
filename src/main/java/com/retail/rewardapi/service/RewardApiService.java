@@ -1,7 +1,9 @@
 package com.retail.rewardapi.service;
 
 import com.retail.rewardapi.model.RewardTransaction;
+import com.retail.rewardapi.repository.RewardTransactionRepository;
 import com.retail.rewardapi.util.RewardUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,7 +15,11 @@ public class RewardApiService {
 
    private final List<RewardTransaction> rewardTransactionList;
 
-   public RewardApiService() {
+   @Autowired
+   private final RewardTransactionRepository rewardTransactionRepository;
+
+   public RewardApiService(RewardTransactionRepository rewardTransactionRepository) {
+       this.rewardTransactionRepository = rewardTransactionRepository;
 
        rewardTransactionList = new ArrayList<>();
 
@@ -61,6 +67,9 @@ public class RewardApiService {
     }
 
     public List<RewardTransaction> getTransactions() {
+        List<RewardTransaction> rewardTransactionList = new ArrayList<>();
+        rewardTransactionRepository.findAll()
+                .forEach(rewardTransaction -> rewardTransactionList.add(rewardTransaction));
         return rewardTransactionList;
     }
 
